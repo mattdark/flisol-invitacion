@@ -5,7 +5,9 @@ import os
 import zipfile
 import tempfile
 import xlrd
-from data import month_name, year, years, location, schedule, dt, dt2
+from modules import schedule
+
+# import month_name, year, years, location, schedule, dt, dt2
 
 def updateZip(zipname, filename, data):
     # generate a temp file
@@ -39,9 +41,9 @@ for x in range(1,5,1):
         name += ' '
     name.rstrip()
     org = worksheet.cell(x,4).value
-    odt = newdoc(doctype='odt', filename=filen, template='./format/invitation.odt')
+    odt = newdoc(doctype='odt', filename=filen, template='./templates/invitation.odt')
     odt.save()
-    a = zipfile.ZipFile('./format/invitation.odt')
+    a = zipfile.ZipFile('./templates/invitation.odt')
     content = a.read('content.xml')
     content = str(content.decode(encoding='utf8'))
     content = str.replace(content,"Mes", month_name)
