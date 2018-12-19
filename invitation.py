@@ -7,8 +7,6 @@ import tempfile
 import xlrd
 from modules import schedule
 
-# import month_name, year, years, location, schedule, dt, dt2
-
 def updateZip(zipname, filename, data):
     # generate a temp file
     tmpfd, tmpname = tempfile.mkstemp(dir=os.path.dirname(zipname))
@@ -46,16 +44,16 @@ for x in range(1,5,1):
     a = zipfile.ZipFile('./templates/invitation.odt')
     content = a.read('content.xml')
     content = str(content.decode(encoding='utf8'))
-    content = str.replace(content,"Mes", month_name)
-    content = str.replace(content,"Año", str(year))
+    content = str.replace(content,"Mes", schedule.month_name)
+    content = str.replace(content,"Año", str(schedule.year))
     content = str.replace(content,"Nombre Completo", name)
     content = str.replace(content,"Organizacion", org)
-    content = str.replace(content,"Fecha", dt)
+    content = str.replace(content,"Fecha", schedule.dt)
     content = str.replace(content,"Organizacion", org)
-    content = str.replace(content,"Sede", location)
-    content = str.replace(content,"Horas", schedule)
-    content = str.replace(content,"Día", dt2)
-    content = str.replace(content,"years", str(years))
+    content = str.replace(content,"Sede", schedule.venue)
+    content = str.replace(content,"Horas", schedule.schedule)
+    content = str.replace(content,"Día", schedule.dt2)
+    content = str.replace(content,"years", str(schedule.years))
     updateZip(filen, 'content.xml', content)
     cm = "unoconv -f pdf " + filen
     os.system(cm)
