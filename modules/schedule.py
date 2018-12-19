@@ -9,7 +9,7 @@ year = your_date.year # Today's year
 month_name = months[month - 1] # Today's month
 years = (year - 2005) + 1 # Years of FLISoL
 
-location = "Instituto Universitario de México"
+venue = "Instituto Universitario de México"
 schedule = "9:00 a 18 horas"
 # Date of the event
 m = 5 # Month
