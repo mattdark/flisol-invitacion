@@ -6,7 +6,7 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 from email.MIMEBase import MIMEBase
 from email import encoders
-from maildata import fromaddr, password
+from email_login import fromaddr, password
 import xlrd
 
 workbook = xlrd.open_workbook('./speakers/speakers.xls')
